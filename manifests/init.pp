@@ -51,7 +51,7 @@ class nrpe {
     group => 'root',
     owner => 'root',
     mode    => '0755',
-    source  => 'puppet:///modules/nrpe/override.conf',	
+    source  => 'puppet:///modules/nrpe/override',	
   }
   service { 'nrpe' :
     ensure => running,

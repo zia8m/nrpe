@@ -46,6 +46,7 @@ class nrpe {
   package { 'nrpe' :
     ensure => present,
   }
-
-
+  service { 'nrpe' :
+    ensure => running,
+  }
 }

@@ -47,7 +47,7 @@ class nrpe {
     ensure => present,
   }
   file { ' /etc/systemd/system/nrpe.service.d/override.conf':
-    ensure => file,
+    ensure => present,
     group => 'root',
     owner => 'root',
     mode    => '0755',

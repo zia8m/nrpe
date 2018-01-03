@@ -46,6 +46,11 @@ class nrpe {
   package { 'nrpe' :
     ensure => present,
   }
+  file { ' /etc/systemd/system/nrpe.service.d/override.conf'
+    ensure => present,
+    group => 'root'
+    mode    => '0777',
+    source  => 'puppet:///modules/nrpe/override.conf'	
   service { 'nrpe' :
     ensure => running,
   }

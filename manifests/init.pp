@@ -58,8 +58,8 @@
 #  }
 #}
 class nrpe {
-  class {'::nrpe::install':} ->
-  class {'::nrpe::file':} ~>
-  class {'::nrpe::service':}
+  class {'::nrpe::install':} 
+  -> class {'::nrpe::file':}
+  ~> class {'::nrpe::service':}
 
 }

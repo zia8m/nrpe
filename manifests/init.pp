@@ -42,18 +42,24 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
+#class nrpe {
+#  package { 'nrpe' :
+#    ensure => present,
+#  }
+#  file { ' /etc/systemd/system/nrpe.service.d/override.conf':
+#    ensure => present,
+#    group => 'root',
+#    owner => 'root',
+#    mode    => '0755',
+#    source  => 'puppet:///modules/nrpe/override',	
+#  }
+#  service { 'nrpe' :
+#    ensure => running,
+#  }
+#}
 class nrpe {
-  package { 'nrpe' :
-    ensure => present,
-  }
-  file { ' /etc/systemd/system/nrpe.service.d/override.conf':
-    ensure => present,
-    group => 'root',
-    owner => 'root',
-    mode    => '0755',
-    source  => 'puppet:///modules/nrpe/override',	
-  }
-  service { 'nrpe' :
-    ensure => running,
-  }
+  class {'::nrpe::install':} ->
+  class {'::nrpe::file':} ~>
+  class {'::nrpe::service':}
+
 }
